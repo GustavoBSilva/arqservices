@@ -49,8 +49,8 @@ Inclua a referência bibliográfica na sua resposta.
 
 ====
 
-[verse,http://spec.openapis.org/oas/v3.1.0]
-OPENAPI INITIATIVE
+[verse,http://www.google.com]
+FONTE DA QUESTÃO 01
 
 === Questão 02
 
@@ -62,8 +62,8 @@ Por que é importante utilizar um ciclo de vida para desenvolvimento de software
 
 ====
 
-[verse,http://spec.openapis.org/oas/v3.1.0]
-OPENAPI INITIATIVE
+[verse,http://www.google.com]
+FONTE DA QUESTÃO 02
 
 === Questão 03
 
@@ -75,8 +75,8 @@ Segundo Gu & Lago [1], o que significa dividir o ciclo de vida de desenvolviment
 
 ====
 
-[verse,http://spec.openapis.org/oas/v3.1.0]
-OPENAPI INITIATIVE
+[verse,http://www.google.com]
+FONTE DA QUESTÃO 03
 
 === Questão 04
 
@@ -92,8 +92,8 @@ Apresente exemplos de tarefas que este stakeholder executa quando assume cada um
 
 ====
 
-[verse,http://spec.openapis.org/oas/v3.1.0]
-OPENAPI INITIATIVE
+[verse,http://www.google.com]
+FONTE DA QUESTÃO 04
 
 === Questão 05
 
@@ -101,12 +101,44 @@ De acordo com Josuttis (2007) [2], defina serviço básico de dados, serviço b�
 
 .Resposta
 ====
-?
+
+**Serviços básicos de dados**: São serviços que realizam a leitura ou gravação de dados em um backend. Este serviços normalmente representam as operações básicas de dados (CRUD).
+Serviços básicos encapsulam questões específicas da plataforma e detalhes de implementação, fazendo com que o consumidor possa realizar uma requisição para um serviço sem saber exatamente como ele é implementado.
+
+Exemplos:
+- Criar novo cliente;
+- Alterar o endereço de um cliente;
+- Retornar uma lista de clientes de acordo com algum critério de busca.
+
+Os serviços básicos também devem possuir as chamadas propriedades ACID, o que significa que devem ser:
+- [A]tomic: Significa que a chamada ao serviço deve ser ou bem-sucedida ou não ter efeito. Assegurar essa propriedade é tarefa do backend que provê o serviço.
+
+- [C]onsistent: Após a chamada ao serviço, o backend é deixado em um estado consistente. Nenhuma outra chamada deve ser capaz de trazer o backend para um estado inconsistente.
+
+- [I]solated: Enquanto um serviço é processado no backend, tal serviço não deve ser influenciado por outros serviços rodando ao mesmo tempo.
+
+- [D]urable: Após uma chamada bem-sucedida a um serviço, deve haver a garantia de que nenhuma falha no sistema seja capaz de reverter os resultados dessa chamada.
+
+**Serviços básicos de lógica**: Representam regras de negócio básicas. Normalmente estes serviços processam dados de entrada e retornam os resultados correspondentes.
+
+Exemplos:
+- Definir um catálogo de produtos e lista de preços;
+- Definir regras para alterar os contratos de um cliente.
+
+Como é possível observar, a diferença entre serviços básicos de lógica e serviços básicos de dados não é sempre muito clara. Isto não é um problema, já que em SOA todos os serviços básicos, sejam eles serviços de dados ou de lógica, normalmente são tratados de maneira similar.
+
+**Serviços compostos**: Representam a primeira categoria de serviços que são constituídos por outros serviços (básicos e/ou outros serviços compostos).
+Serviços compostos operam num nível superior aos serviços básicos, mas ainda assim são de curta duração e conceitualmente 'stateless'.
+
+**Serviços de processo**: Representam fluxos de trabalho de longa duração ou processos de negócios. A partir de uma perspectiva de negócios, um serviço de processo representa uma operação 'macro', que seria um grande fluxo de atividades (serviços) que pode ser interrompido (por intervenção humana).
+
+Diferentemente dos serviços básicos e compostos, um serviço de processo normalmente possui um estado (state) que persiste estável ao longo de várias chamadas (ou seja, seria um serviço 'stateful').
+
+Um típico exemplo de um serviço de processo é um serviço de carrinho de compras. O seu estado deve possuir o conteúdo do pedido do usuário, talvez combinado com alguns dados do cliente, para que o pedido deste cliente possa ser mantido ou manipulado ao longo de múltiplas sessões.
 
 ====
 
-[verse,http://spec.openapis.org/oas/v3.1.0]
-OPENAPI INITIATIVE
+SOA in practice: the art of distributed system design, O'Reilly Media, Nicolai M. Josuttis, 2007, p. 62-65.
 
 == Prática
 
@@ -356,3 +388,9 @@ image::lv.png[Diagrama BPMN]
 |===
 
 === Arquitetura de microserviços
+
+=== Referências
+
+[1] Gu, Q., and Lago, P. A stakeholder-driven service life cycle model for soa. In 2nd international workshop on Service oriented software engineering: in conjunction with the 6th ESEC/FSE joint meeting (2007), pp. 1–7.
+
+[2] Josuttis, N. M. SOA in practice: the art of distributed system design. "O’Reilly Media, Inc.", 2007.
